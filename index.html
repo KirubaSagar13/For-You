@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #f5f1e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            color: #4a4a4a;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #6e7f52;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .yes {
+            background: #6e7f52;
+            color: white;
+        }
+
+        .yes:hover {
+            background: #5a6943;
+            transform: scale(1.05);
+        }
+
+        .no {
+            background: #d88c9a;
+            color: white;
+            position: relative; /* initially normal */
+        }
+
+        .bouquet-screen {
+            position: fixed;
+            inset: 0;
+            background: #f5f1e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 1.2s ease;
+        }
+
+        .bouquet-screen img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainContent">
+    <h1>Can I make you feel as special as you make me feel? 🌸</h1>
+    <p>
+        I wanted to do this in a way that feels like you.
+    </p>
+
+    <div class="buttons">
+        <button class="yes" onclick="revealBouquet()">Yes 🤍</button>
+        <button class="no" id="noBtn">No!</button>
+    </div>
+</div>
+
+<div class="bouquet-screen" id="bouquetScreen">
+    <img src="bouquet.png" alt="Digital Bouquet">
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+
+    let activated = false;
+
+    noBtn.addEventListener("mouseenter", function () {
+
+        if (!activated) {
+            // Switch to fixed positioning ONLY after first hover
+            noBtn.style.position = "fixed";
+            activated = true;
+        }
+
+        const padding = 20;
+
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    });
+
+    function revealBouquet() {
+        document.getElementById("mainContent").style.opacity = "0";
+        setTimeout(() => {
+            document.getElementById("bouquetScreen").classList.add("show");
+        }, 600);
+    }
+</script>
+
+</body>
+</html>
