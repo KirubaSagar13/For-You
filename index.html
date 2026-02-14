@@ -2,7 +2,22 @@
 <html>
 <head>
     <title>For You 🌸</title>
+
+    <!-- Open Graph Preview Meta Tags -->
+    <meta property="og:title" content="For You 🌸">
+    <meta property="og:description" content="I made something just for you.">
+    <meta property="og:image" content="https://kirubasagar13.github.io/For-You/preview.jpeg">
+    <meta property="og:url" content="https://kirubasagar13.github.io/For-You/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card (optional but good practice) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="For You 🌸">
+    <meta name="twitter:description" content="I made something just for you.">
+    <meta name="twitter:image" content="https://kirubasagar13.github.io/For-You/preview.jpeg">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -63,7 +78,7 @@
         .no {
             background: #d88c9a;
             color: white;
-            position: relative; /* initially normal */
+            position: relative;
         }
 
         .bouquet-screen {
@@ -132,10 +147,8 @@
         noBtn.style.top = randomY + "px";
     }
 
-    // Laptop hover
     noBtn.addEventListener("mouseenter", moveButton);
 
-    // Mobile touch
     noBtn.addEventListener("touchstart", function(e) {
         e.preventDefault();
         moveButton();
