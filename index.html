@@ -111,13 +111,11 @@
 
 <script>
     const noBtn = document.getElementById("noBtn");
-
     let activated = false;
 
-    noBtn.addEventListener("mouseenter", function () {
+    function moveButton() {
 
         if (!activated) {
-            // Switch to fixed positioning ONLY after first hover
             noBtn.style.position = "fixed";
             activated = true;
         }
@@ -132,6 +130,15 @@
 
         noBtn.style.left = randomX + "px";
         noBtn.style.top = randomY + "px";
+    }
+
+    // Laptop hover
+    noBtn.addEventListener("mouseenter", moveButton);
+
+    // Mobile touch
+    noBtn.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        moveButton();
     });
 
     function revealBouquet() {
